@@ -1,5 +1,6 @@
 import 'package:daily/core/consts/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 class BigButton extends StatelessWidget {
   final Widget title;
@@ -8,6 +9,7 @@ class BigButton extends StatelessWidget {
   final bool hasBorder;
   final bool paddingHorizontal;
   final Color? borderColor;
+  final bool transparent;
   final void Function() action;
   const BigButton(
     this.title,
@@ -17,23 +19,24 @@ class BigButton extends StatelessWidget {
     this.radius,
     this.hasBorder = false,
     this.paddingHorizontal = true,
+    this.transparent = false,
     this.borderColor,
   });
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        bottom: 25.0,
-        left: paddingHorizontal ? context.size!.width * 0.07 : 0,
-        right: paddingHorizontal ? context.size!.width * 0.07 : 0,
+        left: paddingHorizontal ? context.sized.width * 0.07 : 0,
+        right: paddingHorizontal ? context.sized.width * 0.07 : 0,
       ),
-      width: context.size!.width,
+      width: context.sized.width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(radius ?? 20),
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(color ?? Colors.blueGrey),
+            backgroundColor: MaterialStateProperty.all(
+              color?.withOpacity(transparent ? 0.7 : 1) ?? Colors.blueGrey,
+            ),
             padding: MaterialStateProperty.all(
               const EdgeInsets.symmetric(vertical: 16),
             ),
