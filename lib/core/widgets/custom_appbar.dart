@@ -66,7 +66,8 @@ class CustomAppBar {
               icon: Icon(
                 Icons.chevron_left,
                 color: iconsColor,
-              ))
+              ),
+            )
           : leading ?? Container(),
     );
   }

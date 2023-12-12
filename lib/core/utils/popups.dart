@@ -3,6 +3,7 @@ import 'package:daily/core/widgets/big_button.dart';
 import 'package:daily/core/widgets/gradient_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 mixin PopUps {
   Future inDevelopmentProccessPopUp(BuildContext context) {
@@ -44,7 +45,7 @@ mixin PopUps {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                width: context.size!.height / 3,
+                width: context.sized.width / 3,
                 child: BigButton(
                   Text(
                     "Hayır",
@@ -61,15 +62,14 @@ mixin PopUps {
                   radius: 10,
                 ),
               ),
-              Container(
-                width: context.size!.width / 3,
-                margin: const EdgeInsets.only(bottom: 25),
+              SizedBox(
+                width: context.sized.width / 3,
                 child: GradientButton(
                   () => Navigator.pop(context, true),
                   Text(
                     "Evet",
                     style: customFont(
-                      color: Colors.green,
+                      color: Colors.white,
                     ),
                   ),
                 ),

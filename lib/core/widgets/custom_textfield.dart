@@ -1,4 +1,3 @@
-import 'package:daily/core/consts/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +43,7 @@ class CustomTextField extends StatefulWidget {
       this.upperText,
       this.openEyeColor = Colors.grey,
       this.autofillHints,
-      this.upperTextColor = AppColors.primaryColor,
+      this.upperTextColor = Colors.grey,
       this.borderColor = Colors.grey});
 
   @override
@@ -80,7 +79,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   child: Text(
                     widget.upperText!,
                     style: customFont(
-                      color: widget.upperTextColor,
+                      color: Colors.grey,
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                     ),
@@ -103,7 +102,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             style: customFont(
               fontSize: 14,
               fontWeight: FontWeight.normal,
-              color: widget.borderColor,
+              color: Colors.black,
             ),
             onChanged: (value) {
               if (widget.function != null) {
@@ -130,7 +129,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         ),
                       ],
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+              // contentPadding: const EdgeInsets.symmetric(horizontal: 12),
               border: widget.hasBorder ? border() : null,
               enabledBorder: widget.hasBorder ? border() : null,
               focusedBorder: widget.hasBorder ? border() : null,

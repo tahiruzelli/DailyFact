@@ -4,8 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../logger/logger.dart';
 
-late Size size;
-
 late Logger logger;
 
 class DailyApp extends StatelessWidget {
@@ -23,7 +21,7 @@ class DailyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: (config is DeviceGestureSettings),
       routes: {
-        HomeScreen.route: (context) => const HomeScreen(),
+        HomeScreen.route: (context) => HomeScreen(),
       },
       initialRoute: HomeScreen.route,
     );

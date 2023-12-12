@@ -1,18 +1,65 @@
+import 'package:daily/core/locator/service_locator.dart';
 import 'package:daily/core/logger/logger.dart';
 import 'package:daily/core/utils/custom_font.dart';
 import 'package:daily/core/widgets/custom_appbar.dart';
+import 'package:daily/features/home/presentation/logic_holder/home_logic_holder.dart';
+import 'package:daily/features/home/presentation/widget/fact_card.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
   static const route = "/home";
+  final HomeLogicHolder logicHolder = locator<HomeLogicHolder>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: "Günlük Bilgiler", acts: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                insetPadding: EdgeInsets.zero,
+                contentPadding: context.padding.low,
+                backgroundColor: Colors.transparent,
+                content: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    width: context.sized.width,
+                    color: Colors.black.withOpacity(0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        logicHolder.getSettingsData(context).length,
+                        (index) {
+                          return GestureDetector(
+                            onTap: logicHolder.getSettingsData(context)[index]
+                                ['onTap'],
+                            child: Card(
+                              child: SizedBox(
+                                width: context.sized.width,
+                                child: Padding(
+                                  padding: context.padding.low,
+                                  child: Center(
+                                    child: Text(
+                                      logicHolder.getSettingsData(
+                                          context)[index]['title'],
+                                      style: customFont(fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
           icon: const Icon(Icons.settings),
         ),
       ]).getStandardWidget(),
@@ -31,19 +78,9 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                padding: context.padding.normal,
-                decoration: BoxDecoration(
-                  boxShadow: normalShadow,
-                  color: Colors.white.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  "Pisa Kulesi'nin üzerine kurulu olduğu, daha inşaat bitmeden eğilmeye başlamasına sebep olan yumuşak toprak, kulenin 4 farklı depremden sağlam çıkmasını sağlamıştır",
-                  style: customFont(
-                    fontSize: 16,
-                  ),
-                ),
+              const FactCard(
+                "Pisa Kulesi'nin üzerine kurulu olduğu, daha inşaat bitmeden eğilmeye başlamasına sebep olan yumuşak toprak, kulenin 4 farklı depremden sağlam çıkmasını sağlamıştır",
+                false,
               ),
               const SizedBox(height: 30),
               Row(
