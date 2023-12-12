@@ -35,7 +35,7 @@ class BigButton extends StatelessWidget {
         child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
-              color?.withOpacity(transparent ? 0.7 : 1) ?? Colors.blueGrey,
+              color?.withOpacity(transparent ? 0.9 : 1) ?? Colors.blueGrey,
             ),
             padding: MaterialStateProperty.all(
               const EdgeInsets.symmetric(vertical: 16),

@@ -66,8 +66,8 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-              "https://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-5.jpg",
+            image: AssetImage(
+              "assets/images/background.png",
             ),
             fit: BoxFit.cover,
           ),
@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                       boxShadow: normalShadow,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withOpacity(0.9),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: IconButton(
@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                       height: 50,
                       decoration: BoxDecoration(
                         boxShadow: normalShadow,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withOpacity(0.9),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(

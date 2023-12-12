@@ -16,7 +16,7 @@ class FactCard extends StatelessWidget with PopUps {
           margin: context.padding.onlyBottomLow,
           decoration: BoxDecoration(
             boxShadow: normalShadow,
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withOpacity(0.9),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(

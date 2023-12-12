@@ -1,5 +1,5 @@
+import 'package:daily/core/data/categories.dart';
 import 'package:daily/core/widgets/custom_appbar.dart';
-import 'package:daily/features/categories/presentation/items/category_item.dart';
 import 'package:daily/features/categories/presentation/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
@@ -18,6 +18,7 @@ class CategoriesScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: const BoxDecoration(
+          
           image: DecorationImage(
             image: NetworkImage(
               "https://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-5.jpg",
@@ -31,22 +32,16 @@ class CategoriesScreen extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               childAspectRatio:
-                  ((context.sized.width * 0.4) / (context.sized.height / 4)),
+                  ((context.sized.width * 0.4) / (context.sized.height *0.22)),
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
             controller: ScrollController(keepScrollOffset: false),
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
-            itemCount: 20,
+            itemCount: categories.length,
             itemBuilder: (BuildContext context, index) {
-              return CategoryCard(
-                CategoryItem(
-                  title: "Bilim",
-                  color: "#03fc7b",
-                  iconPath: "assets/images/science_image.png",
-                ),
-              );
+              return CategoryCard(categories[index]);
             },
           ),
         ),

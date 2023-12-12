@@ -182,7 +182,6 @@ class _GenericDropdownState<T> extends State<GenericDropdown<T>> {
             onChanged: (item) {
               setState(() {
                 dropDownValue = item;
-                print(dropDownValue);
               });
               widget.onChanged(item!);
             },

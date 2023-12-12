@@ -60,6 +60,9 @@ dependencies:
   kartal: ^3.5.0
 
 dev_dependencies:
+  #firebase
+  cloud_firestore: ^4.13.6
+  firebase_core: ^2.24.2
   flutter_test:
     sdk: flutter
 
