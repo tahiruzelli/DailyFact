@@ -173,6 +173,7 @@ class _GenericDropdownState<T> extends State<GenericDropdown<T>> {
                 ),
               ),
             ),
+            underline: const SizedBox(),
             items: widget.items.map((T item) {
               return DropdownMenuItem<T>(
                 value: item,

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "475884539479",
+    "project_id": "dailyfact-7d2a9",
+    "storage_bucket": "dailyfact-7d2a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475884539479:android:6b21401d6f14ac0916dd12",
+        "android_client_info": {
+          "package_name": "com.tutech.dailyfact"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgsxxifU6MvDhjmC_lNmOiVqaQhPaHqtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

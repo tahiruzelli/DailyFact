@@ -25,10 +25,29 @@ mixin _$SuggestFactLogicHolder on _SuggestFactLogicHolderBase, Store {
     });
   }
 
+  late final _$isAddSuggestButtonLoadingAtom = Atom(
+      name: '_SuggestFactLogicHolderBase.isAddSuggestButtonLoading',
+      context: context);
+
+  @override
+  bool get isAddSuggestButtonLoading {
+    _$isAddSuggestButtonLoadingAtom.reportRead();
+    return super.isAddSuggestButtonLoading;
+  }
+
+  @override
+  set isAddSuggestButtonLoading(bool value) {
+    _$isAddSuggestButtonLoadingAtom
+        .reportWrite(value, super.isAddSuggestButtonLoading, () {
+      super.isAddSuggestButtonLoading = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-selectedCategory: ${selectedCategory}
+selectedCategory: ${selectedCategory},
+isAddSuggestButtonLoading: ${isAddSuggestButtonLoading}
     ''';
   }
 }

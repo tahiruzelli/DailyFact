@@ -1,10 +1,15 @@
 class CategoryItem {
+  late int id;
   late String title;
   late String color;
   late String iconPath;
 
-  CategoryItem(
-      {required this.title, required this.color, required this.iconPath});
+  CategoryItem({
+    required this.title,
+    required this.color,
+    required this.iconPath,
+    required this.id,
+  });
 
   CategoryItem.fromJson(Map<String, dynamic> json) {
     title = json['title'];

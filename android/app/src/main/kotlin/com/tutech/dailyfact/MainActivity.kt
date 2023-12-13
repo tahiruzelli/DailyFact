@@ -1,4 +1,4 @@
-package com.example.daily
+package com.tutech.dailyfact
 
 import io.flutter.embedding.android.FlutterActivity
 
