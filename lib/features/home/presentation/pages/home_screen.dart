@@ -1,3 +1,4 @@
+import 'package:daily/core/localization/init/locale_keys.g.dart';
 import 'package:daily/core/locator/service_locator.dart';
 import 'package:daily/core/logger/logger.dart';
 import 'package:daily/core/utils/custom_font.dart';
@@ -79,7 +80,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const FactCard(
-                "Pisa Kulesi'nin üzerine kurulu olduğu, daha inşaat bitmeden eğilmeye başlamasına sebep olan yumuşak toprak, kulenin 4 farklı depremden sağlam çıkmasını sağlamıştır",
+                LocaleKeys.art_100,
                 false,
               ),
               const SizedBox(height: 30),
