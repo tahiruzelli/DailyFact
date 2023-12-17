@@ -27,8 +27,8 @@ class SuggestFactScreen extends StatelessWidget with SnackBars {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-              "https://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-5.jpg",
+            image: AssetImage(
+              "assets/images/background.png",
             ),
             fit: BoxFit.cover,
           ),
@@ -77,7 +77,8 @@ class SuggestFactScreen extends StatelessWidget with SnackBars {
                         successSnackBar(context, "Öneriniz için teşekkürler");
                         CustomNavigator().pop(context);
                       } else {
-                        errorSnackBar(context, "Önerinizi alırken bir problem oluştu");
+                        errorSnackBar(
+                            context, "Önerinizi alırken bir problem oluştu");
                       }
                     });
                   }

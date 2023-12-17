@@ -1,17 +1,58 @@
-import 'package:daily/core/localization/init/locale_keys.g.dart';
 import 'package:daily/core/locator/service_locator.dart';
-import 'package:daily/core/logger/logger.dart';
 import 'package:daily/core/utils/custom_font.dart';
+import 'package:daily/core/utils/navigator.dart';
+import 'package:daily/core/utils/popups.dart';
 import 'package:daily/core/widgets/custom_appbar.dart';
+import 'package:daily/features/categories/presentation/pages/categories_screen.dart';
 import 'package:daily/features/home/presentation/logic_holder/home_logic_holder.dart';
 import 'package:daily/features/home/presentation/widget/fact_card.dart';
+import 'package:daily/features/suggest/presentation/pages/suggest_fact_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
   static const route = "/home";
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with PopUps {
   final HomeLogicHolder logicHolder = locator<HomeLogicHolder>();
+  List<Map> getSettingsData() {
+    return [
+      {
+        "title": "Kategoriler",
+        "onTap": () {
+          CustomNavigator().pop(context);
+          CustomNavigator().push(
+            context,
+            CategoriesScreen(() => setState(() {})),
+          );
+        }
+      },
+      {
+        "title": "Temalar",
+        "onTap": () {},
+      },
+      {
+        "title": "Beğendiklerim",
+        "onTap": () {
+          CustomNavigator().pop(context);
+          inDevelopmentProccessPopUp(context);
+        },
+      },
+      {
+        "title": "Bilgi Öner",
+        "onTap": () {
+          CustomNavigator().pop(context);
+          CustomNavigator().push(context, SuggestFactScreen());
+        },
+      },
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +73,10 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
-                        logicHolder.getSettingsData(context).length,
+                        getSettingsData().length,
                         (index) {
                           return GestureDetector(
-                            onTap: logicHolder.getSettingsData(context)[index]
-                                ['onTap'],
+                            onTap: getSettingsData()[index]['onTap'],
                             child: Card(
                               child: SizedBox(
                                 width: context.sized.width,
@@ -44,8 +84,7 @@ class HomeScreen extends StatelessWidget {
                                   padding: context.padding.low,
                                   child: Center(
                                     child: Text(
-                                      logicHolder.getSettingsData(
-                                          context)[index]['title'],
+                                      getSettingsData()[index]['title'],
                                       style: customFont(fontSize: 16),
                                     ),
                                   ),
@@ -79,8 +118,8 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const FactCard(
-                LocaleKeys.art_100,
+              FactCard(
+                logicHolder.getDailyFact(),
                 false,
               ),
               const SizedBox(height: 30),
@@ -95,18 +134,14 @@ class HomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: IconButton(
-                      onPressed: () {
-                        logPrint("test");
-                      },
+                      onPressed: () => inDevelopmentProccessPopUp(context),
                       icon: Image.asset(
                         "assets/icons/like_icon.png",
                       ),
                     ),
                   ),
                   InkWell(
-                    onTap: () {
-                      logPrint("text");
-                    },
+                    onTap: () => inDevelopmentProccessPopUp(context),
                     child: Container(
                       width: context.sized.width * 0.7,
                       height: 50,

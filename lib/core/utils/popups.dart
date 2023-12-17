@@ -28,7 +28,7 @@ mixin PopUps {
     );
   }
 
-  Future yesNoPopUp(
+  Future<bool?> yesNoPopUp(
     BuildContext context,
     String content,
   ) {

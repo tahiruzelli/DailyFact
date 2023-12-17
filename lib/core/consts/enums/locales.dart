@@ -8,3 +8,11 @@ enum Locals {
   const Locals(this.locale);
 
 }
+
+enum RequestType {
+  get,
+  post,
+  patch,
+  put,
+  delete,
+}

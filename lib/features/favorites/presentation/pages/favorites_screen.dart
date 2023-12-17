@@ -18,8 +18,8 @@ class FavoritesScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-              "https://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-5.jpg",
+            image: AssetImage(
+              "assets/images/background.png",
             ),
             fit: BoxFit.cover,
           ),

@@ -1477,6 +1477,7 @@ abstract class  LocaleKeys {
   static const health_70 = 'health.70';
   static const health_71 = 'health.71';
   static const health_72 = 'health.72';
+  static const health_73 = 'health.73';
   static const health_74 = 'health.74';
   static const health_75 = 'health.75';
   static const health_76 = 'health.76';
@@ -1522,7 +1523,6 @@ abstract class  LocaleKeys {
   static const health_117 = 'health.117';
   static const health_118 = 'health.118';
   static const health_119 = 'health.119';
-  static const health_120 = 'health.120';
   static const health = 'health';
   static const astronomy_1 = 'astronomy.1';
   static const astronomy_2 = 'astronomy.2';

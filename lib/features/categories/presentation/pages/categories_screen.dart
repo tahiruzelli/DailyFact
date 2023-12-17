@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
-
+  const CategoriesScreen(this.callback, {super.key});
+  final VoidCallback callback;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +18,9 @@ class CategoriesScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          
           image: DecorationImage(
-            image: NetworkImage(
-              "https://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-5.jpg",
+            image: AssetImage(
+              "assets/images/background.png",
             ),
             fit: BoxFit.cover,
           ),
@@ -32,7 +31,7 @@ class CategoriesScreen extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               childAspectRatio:
-                  ((context.sized.width * 0.4) / (context.sized.height *0.22)),
+                  ((context.sized.width * 0.4) / (context.sized.height * 0.22)),
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
@@ -41,7 +40,10 @@ class CategoriesScreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             itemCount: categories.length,
             itemBuilder: (BuildContext context, index) {
-              return CategoryCard(categories[index]);
+              return CategoryCard(
+                categories[index],
+                callback,
+              );
             },
           ),
         ),

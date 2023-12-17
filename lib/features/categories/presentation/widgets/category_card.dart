@@ -1,5 +1,8 @@
+import 'package:daily/core/consts/keys/keys.dart';
 import 'package:daily/core/extensions/color_extension.dart';
+import 'package:daily/core/shared_preferences/shared_preferences.dart';
 import 'package:daily/core/utils/custom_font.dart';
+import 'package:daily/core/utils/navigator.dart';
 import 'package:daily/core/utils/popups.dart';
 import 'package:daily/features/categories/presentation/items/category_item.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +10,12 @@ import 'package:kartal/kartal.dart';
 
 class CategoryCard extends StatelessWidget with PopUps {
   const CategoryCard(
-    this.item, {
+    this.item,
+    this.callback, {
     super.key,
   });
   final CategoryItem item;
+  final VoidCallback callback;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +23,13 @@ class CategoryCard extends StatelessWidget with PopUps {
         yesNoPopUp(
           context,
           "Kategoriyi ${item.title} olarak değiştirmek istediğinize emin misiniz?",
-        ).then((value) {});
+        ).then((value) {
+          if (value ?? false) {
+            prefs.setInt(KeysNames.selectedCategoryKey, item.id - 1);
+            callback();
+            CustomNavigator().pop(context);
+          }
+        });
       },
       child: Container(
         decoration: BoxDecoration(
