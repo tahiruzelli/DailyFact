@@ -8,14 +8,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:home_widget/home_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late FirebaseFirestore firestore;
 
 late int factIndex;
 
+Future<void> backgroundCallBack(Uri? uri) async {
+  if (uri?.host == "updatecounter") {
+    int counter = 0;
+    await HomeWidget.getWidgetData("_counter", defaultValue: 0).then((value) {
+      counter = value!;
+      counter++;
+    });
+
+    await HomeWidget.saveWidgetData("_counter", counter);
+    await HomeWidget.updateWidget(
+        name: "HomeScreenWidgetProvider", iOSName: "HomeScreenWidgetProvider");
+  }
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  HomeWidget.registerInteractivityCallback(backgroundCallBack);
   await EasyLocalization.ensureInitialized();
 
   SystemChrome.setPreferredOrientations([
